@@ -6,18 +6,34 @@ file_content = f.read() #Lagre innhold i fila til file_content som en string
 
 
 
-count = 0
+
+vokal_array = ["a","e","i","o","u","y",]       #Lager et array med alle vokalene
+n = len(vokal_array)
+telle_array = [0]*n                             #Lager et array som teller
+
 
 for i in file_content:
-    if (i == 'a') or (i == 'A'):
-        count = count + 1
-        
-print(count)
+    index = 0
+    for k in vokal_array:
+        if (i.lower() == k):
+            telle_array[index] = telle_array[index] + 1
+        index = index + 1
 
-f_out.write("A or a: ") #Skriv til output.txt om
-f_out.write(str(count)) #hvor mange store og små A'er vi fant
+
+index = 0
+for k in vokal_array:   #Skriv til output.txt om
+    f_out.write(k)
+    f_out.write(": ")
+    f_out.write(str(telle_array[index]))
+    f_out.write("\n")
+
+
+
 
 
 f.close() #Husk å lukk fila etter bruk
 f_out.close()
+
+
+
 
